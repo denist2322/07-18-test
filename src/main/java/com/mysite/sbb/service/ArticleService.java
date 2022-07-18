@@ -36,6 +36,7 @@ public class ArticleService {
         article.setSubject(subject);
         article.setContent(content);
         article.setCreateDate(LocalDateTime.now());
+        article.setView(0);
         articleRepository.save(article);
     }
 

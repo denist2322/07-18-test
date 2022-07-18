@@ -19,6 +19,9 @@ public class Reply {
 
     private LocalDateTime createDate;
 
+    @Column(columnDefinition = "integer default 0", nullable = false)
+    private int replyLike;
+
     @ManyToOne
     private Article article;
 }

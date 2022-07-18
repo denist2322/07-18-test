@@ -31,3 +31,7 @@ input[type=submit]{
 h1 > a{
     color:black;
 }
+
+.red {
+    background-color: red;
+}

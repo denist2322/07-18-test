@@ -32,6 +32,11 @@
                         <div th:text="${#temporals.format(reply.createDate, 'yyyy-MM-dd HH:mm')}"></div>
                     </div>
                 </div>
+                <div>[[${reply.replyLike}]]</div>
+                <form th:action="@{|/reply/like/${article.id}/${reply.id}/${reply.replyLike}|}" method="post">
+                     <input th:if="@{${reply.replyLike} == 1}" type="submit" value="좋아요" class = "red">
+                     <input th:if="@{${reply.replyLike} == 0}" type="submit" value="좋아요" >
+                </form>
             </div>
         </div>
         <!-- 답변 반복 끝  -->

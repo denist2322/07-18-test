@@ -18,7 +18,14 @@ public class ReplyService {
         Reply reply = new Reply();
         reply.setContent(content);
         reply.setCreateDate(LocalDateTime.now());
+        reply.setReplyLike(0);
         reply.setArticle(article);
-        this.replyRepository.save(reply);
+        replyRepository.save(reply);
+    }
+
+    public void setLike(Integer id, int replyLike) {
+        Reply reply = replyRepository.findById(id).get();
+        reply.setReplyLike(replyLike);
+        replyRepository.save(reply);
     }
 }

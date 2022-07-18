@@ -46,8 +46,21 @@ public class ReplyController {
             return "/usr/article/article_detail";
         }
 
-        this.replyService.create(article, replyForm.getContent());
+        replyService.create(article, replyForm.getContent());
         return String.format("redirect:/article/detail/%s", id);
+    }
+
+    @PostMapping("like/{articleId}/{id}/{replyLike}")
+    public String likeAnswer(Model model,@PathVariable("articleId") Integer articleId, @PathVariable("id") Integer id, @PathVariable("replyLike") int replyLike) {
+        if(replyLike == 0){
+            replyLike = 1;
+        }
+        else{
+            replyLike = 0;
+        }
+
+        this.replyService.setLike(id, replyLike);
+        return String.format("redirect:/article/detail/%s", articleId);
     }
 
 }
