@@ -32,6 +32,7 @@ public class ArticleController {
     @RequestMapping("detail/{id}")
     public String showDetail(@PathVariable("id") Integer id, Model model, ReplyForm articleForm) {
         Article article = this.articleService.getArticle(id);
+        articleService.updateView(id);
         model.addAttribute("article", article);
         return "usr/article/article_detail";
     }

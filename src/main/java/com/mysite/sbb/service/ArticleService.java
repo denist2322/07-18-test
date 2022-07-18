@@ -39,4 +39,12 @@ public class ArticleService {
         articleRepository.save(article);
     }
 
+
+    public void updateView(Integer id) {
+        Article article = getArticle(id);
+        int cnt = article.getView();
+        article.setView(cnt+1);
+        articleRepository.save(article);
+    }
+
 }
