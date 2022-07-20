@@ -16,7 +16,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="article, loop : ${articles}">
+        <tr th:each="article, loop : ${paging}">
             <td th:text="${loop.count}"></td>
             <td>
                 <a th:href="@{|/article/detail/${article.id}}">[[${article.subject}]]</a>

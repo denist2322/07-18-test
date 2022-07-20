@@ -35,3 +35,30 @@ h1 > a{
 .red {
     background-color: red;
 }
+
+.JinRo {
+  color: pink;
+  /* 글자의 효과 제거 */
+  text-decoration:none;
+}
+
+.JinRo:hover {
+  color: red;
+}
+
+.wtJin{
+  width:100px;
+  height:50px;
+}
+
+div > a + img{
+    display:none;
+}
+div > a:hover + img{
+    display:inline-block;
+}
+
+img{
+    width:50px;
+    height:50px;
+}

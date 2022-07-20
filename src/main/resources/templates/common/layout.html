@@ -2,14 +2,19 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <link rel="stylesheet" type="text/css" th:href="@{/bootstrap.min.css}">
 <link rel="stylesheet" type="text/css" th:href="@{/style.css}">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<script th:src="@{/bootstrap.min.js}"></script>
 <head>
-  <meta charset="UTF-8">
-<!-- 테일윈드 -->
-<!--  <script src="https://cdn.tailwindcss.com"></script>-->
+    <meta charset="UTF-8">
+    <!-- 테일윈드 -->
+    <!--  <script src="https://cdn.tailwindcss.com"></script>-->
 
-  <title layout:title-pattern="$LAYOUT_TITLE | $CONTENT_TITLE">게시판</title>
+    <title layout:title-pattern="$LAYOUT_TITLE | $CONTENT_TITLE">게시판</title>
 </head>
 <body>
+<nav th:replace="common/navbar :: navbarFragment"></nav>
+<div class="wtJin m-3"><a href="/" class="JinRo">소주는 진로! 꿀꺽</a><img
+        src="https://dimg.donga.com/wps/NEWS/IMAGE/2021/04/21/106528707.1.jpg" alt=""></div>
 <!-- 기본 템플릿 안에 삽입될 내용 Start -->
 <th:block layout:fragment="content"></th:block>
 <!-- 기본 템플릿 안에 삽입될 내용 End -->

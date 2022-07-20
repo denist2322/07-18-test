@@ -4,6 +4,9 @@ import com.mysite.sbb.dao.ArticleRepository;
 import com.mysite.sbb.domain.Article;
 import com.mysite.sbb.util.DataNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -18,6 +21,11 @@ public class ArticleService {
 
     public List<Article> getList() {
         return articleRepository.findAll();
+    }
+
+    public Page<Article> getList(int page) {
+        Pageable pageable = PageRequest.of(page, 10);
+        return this.articleRepository.findAll(pageable);
     }
 
     public Article getArticle(Integer id){
