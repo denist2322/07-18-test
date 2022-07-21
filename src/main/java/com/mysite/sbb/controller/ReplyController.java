@@ -41,7 +41,7 @@ public class ReplyController {
     @PostMapping("create/{id}")
     public String createAnswer(Model model, @PathVariable("id") Integer id, @Valid ReplyForm replyForm, BindingResult bindingResult) {
         Article article = this.articleService.getArticle(id);
-        if(bindingResult.hasErrors()){
+        if (bindingResult.hasErrors()) {
             model.addAttribute("article", article);
             return "/usr/article/article_detail";
         }
@@ -51,15 +51,14 @@ public class ReplyController {
     }
 
     @PostMapping("like/{articleId}/{id}/{replyLike}")
-    public String likeAnswer(Model model,@PathVariable("articleId") Integer articleId, @PathVariable("id") Integer id, @PathVariable("replyLike") int replyLike) {
-        if(replyLike == 0){
+    public String likeAnswer(Model model, @PathVariable("articleId") Integer articleId, @PathVariable("id") Integer id, @PathVariable("replyLike") int replyLike) {
+        if (replyLike == 0) {
             replyLike = 1;
-        }
-        else{
+        } else {
             replyLike = 0;
         }
 
-        this.replyService.setLike(id, replyLike);
+        this.replyService.setLike(articleId, id, replyLike);
         return String.format("redirect:/article/detail/%s", articleId);
     }
 

@@ -1,5 +1,6 @@
 package com.mysite.sbb.service;
 
+import com.mysite.sbb.dao.ArticleRepository;
 import com.mysite.sbb.dao.ReplyRepository;
 import com.mysite.sbb.domain.Reply;
 import com.mysite.sbb.domain.Article;
@@ -14,7 +15,11 @@ public class ReplyService {
     @Autowired
     private ReplyRepository replyRepository;
 
-    public void create(Article article, String content){
+    @Autowired
+    private ArticleRepository articleRepository;
+
+    public void create(Article article, String content) {
+        article.setView(article.getView() - 1);
         Reply reply = new Reply();
         reply.setContent(content);
         reply.setCreateDate(LocalDateTime.now());
@@ -23,9 +28,12 @@ public class ReplyService {
         replyRepository.save(reply);
     }
 
-    public void setLike(Integer id, int replyLike) {
+    public void setLike(Integer articleId, Integer id, int replyLike) {
         Reply reply = replyRepository.findById(id).get();
         reply.setReplyLike(replyLike);
+        Article article = articleRepository.findById(articleId).get();
+        article.setView(article.getView() - 1);
         replyRepository.save(reply);
+        articleRepository.save(article);
     }
 }
